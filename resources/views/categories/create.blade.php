@@ -9,7 +9,7 @@
                         <div class="card-tittle">Crear categoria</div>
                     </div>
                     <div class="card-body">
-                        <form action="#" method="post">
+                        <form action="{{ route('categoria.store')}}" method="post">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6">
@@ -19,7 +19,7 @@
                                         placeholder="Nombre de categoria">
 
                                     @error('nombre')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <div class="text-danger">{{ $message }}</div>
                                     @enderror
 
                                 </div>
@@ -29,7 +29,7 @@
                                         id="slug" placeholder="Nombre de categoria">
 
                                     @error('slug')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <div class="text-danger">{{ $message }}</div>
                                     @enderror
 
                                 </div>
@@ -39,7 +39,7 @@
                                         class="form-control @error('descripcion') is-invalid @enderror" rows="3"></textarea>
 
                                     @error('descripcion')
-                                        <div class="alert alert-danger">{{ $message }}</div>
+                                        <div class="text-danger">{{ $message }}</div>
                                     @enderror
                                 </div>
                             </div>
