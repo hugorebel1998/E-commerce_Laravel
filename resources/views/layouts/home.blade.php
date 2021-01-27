@@ -7,9 +7,9 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="adminlte/plugins/fontawesome-free/css/all.min.css">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
     <!-- Theme style -->
-    <link rel="stylesheet" href="adminlte/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css')}}">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
@@ -67,7 +67,7 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="adminlte/dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="{{ asset('adminlte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">E-commerce</span>
             </a>
 
@@ -76,7 +76,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="adminlte/dist/img/hugo.jpg" class="img-circle elevation-2" alt="User Image">
+                        <img src="{{ asset('adminlte/dist/img/hugo.jpg')}}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
                         <a class="d-block">{{ Auth::user()->name }}</a>

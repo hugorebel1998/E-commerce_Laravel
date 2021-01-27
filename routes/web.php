@@ -32,3 +32,6 @@ Route::match(['get', 'post'], 'register', function () {
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/plantilla/tienda', 'HomeController@tienda')->name('plantilla.tienda')->middleware('auth');
+
+//Categoria
+Route::get('/categoria/create', 'Category@create')->name('categoria.create')->middleware('auth');
