@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,13 +8,23 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Font Awesome Icons -->
-    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
+    {{--
     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css')}}">
+    <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}"> --}}
+    <!-- DataTables -->
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
+    <link rel="stylesheet"
+        href="{{ asset('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
+    <!-- Theme style -->
+    <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+    <!-- Style css -->
+    <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.css') }}">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
 </head>
+
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
 
@@ -47,7 +58,7 @@
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                         document.getElementById('logout-form').submit();">
-                        <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar Sesión') }}
+                            <i class="fas fa-sign-out-alt"></i> {{ __('Cerrar Sesión') }}
                         </a>
                         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                             @csrf
@@ -67,7 +78,8 @@
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link">
-                <img src="{{ asset('adminlte/dist/img/AdminLTELogo.png')}}" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+                <img src="{{ asset('adminlte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
+                    class="brand-image img-circle elevation-3" style="opacity: .8">
                 <span class="brand-text font-weight-light">E-commerce</span>
             </a>
 
@@ -76,7 +88,8 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('adminlte/dist/img/hugo.jpg')}}" class="img-circle elevation-2" alt="User Image">
+                        <img src="{{ asset('adminlte/dist/img/hugo.jpg') }}" class="img-circle elevation-2"
+                            alt="User Image">
                     </div>
                     <div class="info">
                         <a class="d-block">{{ Auth::user()->name }}</a>
@@ -85,7 +98,8 @@
 
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
-                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                        data-accordion="false">
                         <li class="nav-item">
                             <a href="#" class="nav-link active">
                                 <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -130,17 +144,100 @@
             </div>
         </aside>
 
-        <footer class="main-footer">
-            <strong>Copyright &copy; 2020 E-commerce </strong> Todos los derechos reservados.
+        <footer class="main-footer text-center">
+            <strong>&copy; 2020 E-commerce </strong> Todos los derechos reservados.
         </footer>
     </div>
+    
     <!-- jQuery -->
-    <script src="adminlte/plugins/jquery/jquery.min.js"></script>
+    <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
-    <script src="adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script>
+    @yield('scripts')
+    <!-- DataTables -->
+    <script src="{{ asset('adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
+    <script src="{{ asset('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
+    <script src="{{ asset('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
     <!-- AdminLTE App -->
-    <script src="adminlte/dist/js/adminlte.min.js"></script>
-    <!-- Scripts -->
-    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
+
+    <!-- SweetAlert2 -->
+    <script src="{{ asset('adminlte/plugins/sweetalert2/sweetalert2.min.js') }}"></script>
+
+    <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+    <!-- AdminLTE for demo purposes -->
+
+    <!-- jquery-ui -->
+    <!-- <script src="{{ asset('adminlte/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+    <script src="{{ asset('Multiple/jquery-multiple.js') }}"></script> -->
+
+<script>
+    $(function() {
+        $("#example1").DataTable({
+            "responsive": true,
+            "autoWidth": false,
+        });
+        $('#example3').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            "order": [
+                [0, 'desc']
+            ],
+            language: {
+                search: "Buscar:",
+                "lengthMenu": "Recorrer _MENU_ registros por página",
+                "zeroRecords": "No hay resultados",
+                "info": "Página _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros disponibles ",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                paginate: {
+                    first: "Primera",
+                    previous: "Primera",
+                    next: "Última",
+                    last: "Último"
+                },
+            }
+        });
+        $('#example2').DataTable({
+            "paging": true,
+            "lengthChange": true,
+            "searching": true,
+            "ordering": true,
+            "info": true,
+            "autoWidth": false,
+            "responsive": true,
+            "order": [
+                [0, 'desc']
+            ],
+            language: {
+                search: "Buscar:",
+                "lengthMenu": "Recorrer _MENU_ registros por página",
+                "zeroRecords": "No hay resultados",
+                "info": "Página _PAGE_ de _PAGES_",
+                "infoEmpty": "No hay registros disponibles ",
+                "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                paginate: {
+                    first: "Primera",
+                    previous: "Primera",
+                    next: "Última",
+                    last: "Último"
+                },
+            }
+        });
+    });
+</script>
+
+<script>
+    $(document).ready(function() {
+        bsCustomFileInput.init();
+    });
+</script>
 </body>
+
 </html>

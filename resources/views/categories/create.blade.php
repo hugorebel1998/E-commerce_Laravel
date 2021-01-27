@@ -47,20 +47,11 @@
                                 <button type="submit" class="btn btn-sm btn-primary"> <i class="fas fa-save"></i>
                                     Guardar</button>
                             </div>
-                        </form> <br><br>
-                        {{ nombre }}
+                        </form> 
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <script>
-        var app = new Vue({
-            el: '#app',
-            data: {
-                nombre: 'Hugo Guillermo'
-            }
-        });
-    </script>
 @endsection
