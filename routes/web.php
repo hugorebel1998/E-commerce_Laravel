@@ -25,9 +25,10 @@ Route::get('/', function () {
 // });
 
 Auth::routes();
-// Auth::routes(['register' => false]);
-// Route::match(['get', 'post'], 'register', function () {
-//     return redirect('/');
-// });
+Auth::routes(['register' => false]);
+Route::match(['get', 'post'], 'register', function () {
+    return redirect('/');
+});
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/plantilla/tienda', 'HomeController@tienda')->name('plantilla.tienda')->middleware('auth');
