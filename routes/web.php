@@ -38,5 +38,8 @@ Route::get('/plantilla/tienda', 'HomeController@tienda')->name('plantilla.tienda
 //Categoria
 Route::get('/categoria/index', 'CategoryController@index')->name('categoria.index')->middleware('auth');
 Route::get('/categoria/create', 'CategoryController@create')->name('categoria.create')->middleware('auth');
-Route::get('/categoria/show/{id}', 'CategoryController@show')->name('categoria.show')->middleware('auth');
 Route::post('/categoria/store', 'CategoryController@store')->name('categoria.store')->middleware('auth');
+Route::get('/categoria/show/{categori}', 'CategoryController@show')->name('categoria.show')->middleware('auth');
+Route::get('/categoria/edit/{categori}', 'CategoryController@edit')->name('categoria.edit')->middleware('auth');
+Route::post('/categoria/update/{categori}', 'CategoryController@update')->name('categoria.update')->middleware('auth');
+Route::get('/categoria/delete/{categori}', 'CategoryController@delete')->name('categoria.delete')->middleware('auth');

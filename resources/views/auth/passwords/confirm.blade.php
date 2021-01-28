@@ -1,7 +1,23 @@
 @extends('layouts.app')
-
 @section('content')
-<div class="container">
+<style>
+.portada{
+   background: url( {{asset('img/FONDO_REGISTRO.jpg')}} ) no-repeat fixed center;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+}
+
+
+    .bg-boton{
+        background-color: #213A8A;
+    }
+    .text-boton{
+        color: #213A8A;
+    }
+</style>
+<div class="container portada">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">

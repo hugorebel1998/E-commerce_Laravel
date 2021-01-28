@@ -1,44 +1,76 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<style>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+.portada{
+   background: url( {{asset('img/FONDO_REGISTRO.jpg')}} ) no-repeat fixed center;
+   -webkit-background-size: cover;
+   -moz-background-size: cover;
+   -o-background-size: cover;
+   background-size: cover;
+}
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+    .bg-boton{
+        background-color: #213A8A;
+    }
+    .text-boton{
+        color: #213A8A;
+    }
+</style>
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+<div class="hold-transition login-page portada">
+    <div class="login-box">
+        <div class="login-logo">
+        <img src="{{ asset('img/logo_life_in_genomics.png')}}" alt="Life in Genomics" width="250">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+        </div>
+        <div class="card mt-4">
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+            <div class="card-body login-card-body">
+                @if (session('status'))
+                <div class="alert alert-success" role="alert">
+                    {{ session('status') }}
+                </div>
+                @endif
+
+                <form method="POST" action="{{ route('password.email') }}">
+                    @csrf
+                    <div class="input-group mb-3">
+                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="Correo electrónico">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-envelope"></span>
                             </div>
+                            @error('email')
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $message }}</strong>
+                            </span>
+                            @enderror
                         </div>
+                        @error('email')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                    </div>
+                    <div class="container">
+                        <div class="row justify-content-center">
+                            <div class="form-group">
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
+                                <button type="submit" class="btn btn-sm btn-primary btn-block rounded-pill bg-boton">
+                                    <i class="fas fa-envelope-square"></i> Enviar link de confirmación
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </div>
+                </form>
+                <div class="row">
+                    <small id="emailHelp" class="form-text text-muted">
+                        <a class="btn btn-link text-boton" href="{{ route('login') }}">
+                            {{ __('Iniciar sesión') }}
+                        </a>
+                    </small>
                 </div>
             </div>
         </div>

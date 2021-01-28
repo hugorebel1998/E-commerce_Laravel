@@ -18,6 +18,7 @@ class CreateCategoriesTable extends Migration
             $table->string('nombre',50)->unique();
             $table->string('slug',50)->unique();
             $table->string('descripcion')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -30,5 +31,6 @@ class CreateCategoriesTable extends Migration
     public function down()
     {
         Schema::dropIfExists('categories');
+
     }
 }
