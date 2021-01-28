@@ -29,11 +29,23 @@ class CategoryController extends Controller
         $categoria->slug = $request->slug;
         $categoria->descripcion = $request->descripcion;
 
-        $categoria->save();
 
-        return redirect()->route('categoria.index');
+        if ($categoria->save()) {
+            $categoria->nombre = $request->nombre;
+            $categoria->slug = $request->slug;
+            $categoria->descripcion = $request->descripcion;
 
-        // var_dump(json_decode($categoria));
+            if ($categoria->save()) {
+                toastr()->success('Se registro categoria:<b>' . $categoria->nombre . '</b>');
+                return redirect()->to(route('categoria.index'));
+            } else {
+                toastr()->error('Error al registrar categoria');
+                return redirect()->back();
+            }
+        } else {
+            toastr()->error('Error al registrar categoria');
+            return redirect()->to(route('categories.create'));
+        }
     }
 
     public function show($categori)
@@ -47,11 +59,11 @@ class CategoryController extends Controller
     {
 
         $categoria = Category::find($categori);
-
         return view('categories.edit', compact('categoria'));
     }
 
-    public function update(CategoryRequest $request, $categori){
+    public function update(CategoryRequest $request, $categori)
+    {
 
         $categoria = Category::find($categori);
 
@@ -59,22 +71,25 @@ class CategoryController extends Controller
         $categoria->slug = $request->slug;
         $categoria->descripcion = $request->descripcion;
 
-        $categoria->save();
-        return redirect()->route('categoria.index');
+        // $categoria->save();
+        // return redirect()->route('categoria.index');
+        if($categoria->save()){
+            toastr()->info('Categoria  editada:<b>' . $categoria->nombre . '</b>');
+            return redirect()->to(route('categoria.index'));
+        } else {
+            toastr()->error('Error al editar categoria');
+            return redirect()->back();
 
+        }
     }
 
-    public function delete($categori){
+    public function delete($categori)
+    {
 
         $categoria = Category::findOrFail($categori);
 
         $categoria->delete();
 
         return redirect()->route('categoria.index');
-
-
     }
-
-
-    
 }

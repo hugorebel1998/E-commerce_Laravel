@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.css') }}">
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    @toastr_css
 
 </head>
 
@@ -239,5 +240,7 @@
     });
 </script>
 </body>
+@toastr_js
+@toastr_render
 
 </html>
