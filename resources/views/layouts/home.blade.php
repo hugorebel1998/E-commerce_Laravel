@@ -34,7 +34,8 @@
             <!-- Left navbar links -->
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars text-white"></i></a>
+                    <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i
+                            class="fas fa-bars text-white"></i></a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
                     <a href="{{ route('home') }}" class="nav-link text-white">Inicio</a>
@@ -67,7 +68,8 @@
                     </div>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link text-white" data-widget="control-sidebar" data-slide="true" href="#" role="button">
+                    <a class="nav-link text-white" data-widget="control-sidebar" data-slide="true" href="#"
+                        role="button">
                         <i class="fas fa-th-large"></i>
                     </a>
                 </li>
@@ -76,7 +78,7 @@
         <!-- /.navbar -->
 
         <!-- Main Sidebar Container -->
-        <aside class="main-sidebar sidebar-light-teal elevation-4">
+        <aside class="main-sidebar sidebar-light-info elevation-4">
             <!-- Brand Logo -->
             <a href="index3.html" class="brand-link navbar-info">
                 <img src="{{ asset('adminlte/dist/img/AdminLTELogo.png') }}" alt="AdminLTE Logo"
@@ -97,29 +99,55 @@
                     </div>
                 </div>
 
+        
                 <!-- Sidebar Menu -->
                 <nav class="mt-2">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
                         data-accordion="false">
                         <li class="nav-item">
                             <a href="#" class="nav-link active">
-                                <i class="nav-icon fas fa-tachometer-alt"></i>
-                                <p class="">
+                                <i class="nav-icon fas fa-th"></i>
+                                <p>
                                     Categorias
                                     <i class="right fas fa-angle-left"></i>
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
-                                    <a href="{{ route('categoria.index')}}" class="nav-link active">
-                                        <i class="fas fa-industry"></i>
+                                    <a href="{{ route('categoria.index')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
                                         <p>Gestión de categorias</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a href="{{ route('categoria.create')}}" class="nav-link active">
-                                        <i class="fas fa-plus"></i>
-                                        <p>Crear categoria</p>
+                                    <a href="{{ route('categoria.create')}}" class="nav-link">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>crear categoria</p>
+                                    </a>
+                                </li>
+                                
+                            </ul>
+                        </li>
+                        <li class="nav-item ">
+                            <a href="#" class="nav-link active">
+                                <i class="nav-icon fas fa-table"></i>
+                                <p>
+                                    Productos
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('producto.index')}}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p class="text-black">Gestión de productos</p>
+                                    </a>
+                                </li>
+                             
+                                <li class="nav-item">
+                                    <a href="{{ route('producto.create')}}" class="nav-link">
+                                        <i class="fas fa-plus nav-icon"></i>
+                                        <p>crear producto</p>
                                     </a>
                                 </li>
                             </ul>
@@ -149,7 +177,7 @@
             <strong>&copy; 2020 E-commerce </strong> Todos los derechos reservados.
         </footer>
     </div>
-    
+
     <!-- jQuery -->
     <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
@@ -173,72 +201,74 @@
     <!-- <script src="{{ asset('adminlte/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
     <script src="{{ asset('Multiple/jquery-multiple.js') }}"></script> -->
 
-<script>
-    $(function() {
-        $("#example1").DataTable({
-            "responsive": true,
-            "autoWidth": false,
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+            $('#example3').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "order": [
+                    [0, 'desc']
+                ],
+                language: {
+                    search: "Buscar:",
+                    "lengthMenu": "Recorrer _MENU_ registros por página",
+                    "zeroRecords": "No hay resultados",
+                    "info": "Página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles ",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    paginate: {
+                        first: "Primera",
+                        previous: "Primera",
+                        next: "Última",
+                        last: "Último"
+                    },
+                }
+            });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "order": [
+                    [0, 'desc']
+                ],
+                language: {
+                    search: "Buscar:",
+                    "lengthMenu": "Recorrer _MENU_ registros por página",
+                    "zeroRecords": "No hay resultados",
+                    "info": "Página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles ",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    paginate: {
+                        first: "Primera",
+                        previous: "Primera",
+                        next: "Última",
+                        last: "Último"
+                    },
+                }
+            });
         });
-        $('#example3').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-            "order": [
-                [0, 'desc']
-            ],
-            language: {
-                search: "Buscar:",
-                "lengthMenu": "Recorrer _MENU_ registros por página",
-                "zeroRecords": "No hay resultados",
-                "info": "Página _PAGE_ de _PAGES_",
-                "infoEmpty": "No hay registros disponibles ",
-                "infoFiltered": "(filtrado de _MAX_ registros totales)",
-                paginate: {
-                    first: "Primera",
-                    previous: "Primera",
-                    next: "Última",
-                    last: "Último"
-                },
-            }
-        });
-        $('#example2').DataTable({
-            "paging": true,
-            "lengthChange": true,
-            "searching": true,
-            "ordering": true,
-            "info": true,
-            "autoWidth": false,
-            "responsive": true,
-            "order": [
-                [0, 'desc']
-            ],
-            language: {
-                search: "Buscar:",
-                "lengthMenu": "Recorrer _MENU_ registros por página",
-                "zeroRecords": "No hay resultados",
-                "info": "Página _PAGE_ de _PAGES_",
-                "infoEmpty": "No hay registros disponibles ",
-                "infoFiltered": "(filtrado de _MAX_ registros totales)",
-                paginate: {
-                    first: "Primera",
-                    previous: "Primera",
-                    next: "Última",
-                    last: "Último"
-                },
-            }
-        });
-    });
-</script>
 
-<script>
-    $(document).ready(function() {
-        bsCustomFileInput.init();
-    });
-</script>
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            bsCustomFileInput.init();
+        });
+
+    </script>
 </body>
 @toastr_js
 @toastr_render

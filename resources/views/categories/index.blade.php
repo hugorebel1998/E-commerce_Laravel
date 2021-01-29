@@ -21,6 +21,8 @@
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Slug</th>
                                     <th scope="col">Descripción</th>
+                                    <th scope="col">Fecha registro</th>
+                                    <th scope="col">Fecha actualización</th>
                                     <th scope="col"></th>
                                 </tr>
                             </thead>
@@ -30,6 +32,9 @@
                                         <td>{{ $category->nombre }}</td>
                                         <td>{{ $category->slug}}</td>
                                         <td>{{ $category->descripcion}}</td>
+                                        <td>{{ $category->created_at}}</td>
+                                        <td>{{ $category->updated_at}}</td>
+
                                         <td>
                                             <div class="dropdown">
                                                 <a class="btn btn-sm btn-info dropdown-toggle text-white" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -39,7 +44,7 @@
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                   <a class="dropdown-item text-success" href="{{ route('categoria.show', $category->id)}}"><i class="far fa-eye"></i> Ver categoria</a>
                                                   <a class="dropdown-item text-primary" href="{{ route('categoria.edit', $category->id)}}"><i class="far fa-edit"></i > Editar categoria</a>
-                                                  <a class="dropdown-item text-danger" href="{{ route('categoria.delete', $category->id)}}"><i class="fas fa-trash-alt"></i> Eliminar</a>
+                                                  <a class="dropdown-item text-danger" onclick="return confirm('¿ Estas seguro de eliminar esta categoria ?')" href="{{ route('categoria.delete', $category->id)}}"><i class="fas fa-trash-alt"></i> Eliminar categoria</a>
                                                 </div>
                                               </div>
                                         </td>
@@ -54,3 +59,4 @@
     </div>
     @include('components.buscador')
 @endsection
+

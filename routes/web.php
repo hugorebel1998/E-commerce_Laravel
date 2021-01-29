@@ -14,15 +14,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    if (Auth::check()) {
+        return redirect(route('home'));
+    } else {
+        return view('auth.login');
+    }
 });
-// Route::get('/', function () {
-//     if (Auth::check()) {
-//         return redirect(route('home'));
-//     } else {
-//         return view('auth.login');
-//     }
-// });
 
 Auth::routes();
 Auth::routes(['register' => false]);
@@ -35,7 +32,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 //Tienda
 Route::get('/plantilla/tienda', 'HomeController@tienda')->name('plantilla.tienda')->middleware('auth');
 
-//Categoria
+//Categorias
 Route::get('/categoria/index', 'CategoryController@index')->name('categoria.index')->middleware('auth');
 Route::get('/categoria/create', 'CategoryController@create')->name('categoria.create')->middleware('auth');
 Route::post('/categoria/store', 'CategoryController@store')->name('categoria.store')->middleware('auth');
@@ -43,3 +40,8 @@ Route::get('/categoria/show/{categori}', 'CategoryController@show')->name('categ
 Route::get('/categoria/edit/{categori}', 'CategoryController@edit')->name('categoria.edit')->middleware('auth');
 Route::post('/categoria/update/{categori}', 'CategoryController@update')->name('categoria.update')->middleware('auth');
 Route::get('/categoria/delete/{categori}', 'CategoryController@delete')->name('categoria.delete')->middleware('auth');
+
+//Productos
+Route::get('/producto/index', 'ProductController@index')->name('producto.index')->middleware('auth');
+Route::get('/producto/create','ProductController@create')->name('producto.create')->middleware('auth');
+Route::post('/producto/store', 'ProductController@store')->name('producto.store')->middleware('auth');
