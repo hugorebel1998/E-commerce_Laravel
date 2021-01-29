@@ -29,7 +29,7 @@ class ProductRequest extends FormRequest
             'cantidad' => 'required|numeric',
             'precio_actual' => 'required|numeric|min:12',
             'precio_anterior' => 'required|numeric|min:12',
-            // 'porcentaje_descuento' => 'required',
+            'porcentaje_descuento' => 'required',
             'descripcion_corta' =>'required',
             'descripcion_larga' =>'required',
             'especificaciones' => 'required',

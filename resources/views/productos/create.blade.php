@@ -23,7 +23,7 @@
                                             <label for="nombre">Nombre de producto</label>
                                             <input type="text" name="nombre"
                                                 class="form-control @error('nombre') is-invalid @enderror"
-                                                placeholder="Nombre de producto">
+                                                placeholder="Nombre de producto" value="{{ old('nombre')}}">
                                             @error('nombre')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -32,7 +32,7 @@
                                             <label for="slug">Slug</label>
                                             <input type="text" name="slug"
                                                 class="form-control @error('slug') is-invalid @enderror"
-                                                placeholder="Nombre de slug">
+                                                placeholder="Nombre de slug" value="{{ old('slug')}}">
                                             @error('slug')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -100,7 +100,7 @@
                                                 </div>
                                                 <input type="number" name="precio_actual" min="0" step=".01"
                                                     class="form-control @error('precio_actual') is-invalid @enderror"
-                                                    placeholder="Precio actual">
+                                                    placeholder="Precio actual" value="{{ old('precio_actual')}}">
                                             </div>
                                             @error('precio_actual')
                                                 <div class="text-danger">{{ $message }}</div>
@@ -111,11 +111,14 @@
                                         <div class="col-md-12 mt-6">
                                             <label for="category_id">Porcentaje de descuento</label>
                                             <div class="input-group">
-                                                <input class="form-control" type="number" id="porcentajededescuento"
-                                                    name="porcentajededescuento" step="any" min="0" min="100" value="0">
+                                                <input class="form-control @error('porcentaje_descuento') is-invalid @enderror" type="number" id="porcentaje_descuento"
+                                                    name="porcentaje_descuento" step="any" min="0" min="100" value="0">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">%</span>
                                                 </div>
+                                                @error('porcentaje_descuento')
+                                                <div class="text-danger">{{ $message }}</div>
+                                            @enderror
 
                                             </div>
                                             <div class="progress mt-3 mb-4">
