@@ -20,14 +20,20 @@
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
     <!-- Style css -->
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.css') }}">
+        <!-- Include this in your blade layout -->
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
 
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @toastr_css
+    
+
 
 </head>
 
 <body class="hold-transition sidebar-mini">
     <div class="wrapper">
+        @include('sweet::alert')
 
         <!-- Navbar -->
         <nav class="main-header navbar navbar-expand navbar-dark navbar-info">
@@ -115,14 +121,14 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('categoria.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-list-alt nav-icon"></i>
                                         <p>Gestión de categorias</p>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a href="{{ route('categoria.create')}}" class="nav-link">
                                         <i class="fas fa-plus nav-icon"></i>
-                                        <p>crear categoria</p>
+                                        <p>Crear categoria</p>
                                     </a>
                                 </li>
                                 
@@ -139,7 +145,7 @@
                             <ul class="nav nav-treeview">
                                 <li class="nav-item">
                                     <a href="{{ route('producto.index')}}" class="nav-link">
-                                        <i class="far fa-circle nav-icon"></i>
+                                        <i class="far fa-list-alt nav-icon"></i>
                                         <p class="text-black">Gestión de productos</p>
                                     </a>
                                 </li>
@@ -147,7 +153,7 @@
                                 <li class="nav-item">
                                     <a href="{{ route('producto.create')}}" class="nav-link">
                                         <i class="fas fa-plus nav-icon"></i>
-                                        <p>crear producto</p>
+                                        <p>Crear producto</p>
                                     </a>
                                 </li>
                             </ul>

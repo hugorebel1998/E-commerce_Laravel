@@ -21,12 +21,12 @@ class CreateProductsTable extends Migration
             $table->decimal('precio_actual',12,2)->default(0);
             $table->decimal('precio_anterior',12,2)->default(0);
             $table->integer('porcentaje_descuento');
-            $table->text('descripcion_corta')->nullable();
-            $table->text('descripcion_larga')->nullable();
-            $table->text('especificaciones')->nullable();
-            $table->text('datos_de_interes')->nullable();
-            $table->integer('visitas')->default(0);
-            $table->integer('ventas')->default(0);
+            $table->text('descripcion_corta');
+            $table->text('descripcion_larga');
+            $table->text('especificaciones');
+            $table->text('datos_de_interes');
+            $table->integer('visitas')->default(0)->nullable();
+            $table->integer('ventas')->default(0)->nullable();
             $table->string('status');
             $table->char('activo',2);
             $table->char('sliderprincipal',2);

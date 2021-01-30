@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <h1 class="text-center mb-4"><i class="far fa-list-alt"></i> Lista de productos</h1>
         <div class="row justify-content-center">
-            <div class="col-md-12">
+            <div class="col-md-10">
                 <div class="card transparente">
                     <div class="card-header">
                         <p class="lead text-primary"> Categorias registradas</p>
@@ -20,11 +20,11 @@
                                 <tr>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Slug</th>
-                                     <th scope="col">Cantidad</th>
-                                    {{-- <th scope="col">Precio actual</th>
+                                    <th scope="col">Cantidad</th>
+                                    <th scope="col">Precio actual</th>
                                     <th scope="col">Precio anterior</th>
                                     <th scope="col">Descuento</th>
-                                    <th scope="col">Descripcion corta</th>
+                                    {{--<th scope="col">Descripcion corta</th>
                                     <th scope="col">Descripcion larga</th>
                                     <th scope="col">Especificaciónes</th>
                                     <th scope="col">Datos interes</th>
@@ -40,10 +40,10 @@
                                         <td>{{ $product->nombre }}</td>
                                         <td>{{ $product->slug}}</td>
                                         <td>{{ $product->cantidad}}</td>
-                                        {{-- <td>{{ $product->precio_actual}}</td>
+                                        <td>{{ $product->precio_actual}}</td>
                                         <td>{{ $product->precio_anterior}}</td>
                                         <td>{{ $product->porcentaje_descuento}}</td>
-                                        <td>{{ $product->descripcion_corta}}</td>
+                                        {{--<td>{{ $product->descripcion_corta}}</td>
                                         <td>{{ $product->descripcion_larga}}</td>
                                         <td>{{ $product->especificaciones}}</td>
                                         <td>{{ $product->datos_de_interes}}</td>
@@ -62,7 +62,7 @@
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                   <a class="dropdown-item text-success" href="#"><i class="far fa-eye"></i> Ver producto</a>
                                                   <a class="dropdown-item text-primary" href="#"><i class="far fa-edit"></i > Editar producto</a>
-                                                  <a class="dropdown-item text-danger" onclick="return confirm('¿ Estas seguro de eliminar esta categoria ?')" href="{{ route('categoria.delete', $category->id)}}"><i class="fas fa-trash-alt"></i> Eliminar producto</a>
+                                                  <a class="dropdown-item text-danger" onclick="return confirm('¿ Estas seguro de eliminar esta categoria ?')" href="#"><i class="fas fa-trash-alt"></i> Eliminar producto</a>
                                                 </div>
                                               </div>
                                         </td>

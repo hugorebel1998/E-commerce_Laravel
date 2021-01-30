@@ -17,5 +17,18 @@ class CategorySeeder extends Seeder
             'slug' => 'caballero',
             'descripcion' => 'Ropa para caballero'
         ]);
+
+        Category::create([
+            'nombre' => 'Dama',
+            'slug' => 'dama',
+            'descripcion' => 'Ropa para dama'
+        ]);
+
+        Category::create([
+            'nombre' => 'Electrónica',
+            'slug' => 'electrónica',
+            'descripcion' => 'Aparatos de electrónica'
+        ]);
+
     }
 }
