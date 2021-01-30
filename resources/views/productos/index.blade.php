@@ -7,7 +7,7 @@
             <div class="col-md-10">
                 <div class="card transparente">
                     <div class="card-header">
-                        <p class="lead text-primary"> Categorias registradas</p>
+                        <p class="lead text-primary"> Productos registrados</p>
                         <div class="row justify-content-end ">
                             <a href="{{ route('producto.create')}}" class="btn btn-sm bg-primary text-white mr-3">
                                 <i class="fas fa-plus complemento-plus text-white"></i> Agregar producto</a>
