@@ -5,10 +5,6 @@
             <div class="col-md-8">
                 <div class="card card-primary card-outline">
                     <div class="card-body box-profile">
-                        <div class="text-center">
-                            <img class="profile-user-img img-fluid img-circle"
-                                src="{{ asset('adminlte/dist/img/jeans.jpeg') }}" alt="User picture">
-                        </div>
                         <hr>
                         <div class="row ">
                             <div class="col-md-6">
@@ -26,6 +22,9 @@
                         </div>
                         <div class="text-left">
                             <a href="{{ route('categoria.index')}}" class="btn btn-sm btn-success"><i class="fas fa-arrow-left"></i></a>
+                        </div>
+                        <div class="text-right">
+                            <a href="{{ route('categoria.edit', $categoria->id)}}" class="btn btn-sm btn-primary"><i class="fas fa-edit"></i></a>
                         </div>
 
                     </div>

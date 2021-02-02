@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Product;
 use App\Category;
+use App\Image;
 use Illuminate\Http\Request;
 use App\Http\Requests\ProductRequest;
 
@@ -31,8 +32,33 @@ class ProductController extends Controller
     }
 
     public function store(ProductRequest $request)
+
     {
 
+        $urlimagenes = [];
+
+        if ($request->hasFile('imagenes')) {
+            //Capturamos los archivos que se estan enviardo
+            $imagenes = $request->file(('imagenes'));
+
+            // dd($imagenes);
+            //Recorrer todas las imagenes
+            foreach($imagenes as $imagen){
+                //Obtener el nombre original de laimagen con getClientOriginalName
+                $nombre = time().'_'. $imagen->getClientOriginalName();
+                
+                //Crear en donde se alojara la imagen con public_path
+                $ruta = public_path().'/img';
+
+                //Guardar la imagen move
+                $imagen->move($ruta, $nombre);
+
+                //Guardarlo en la BD
+                $urlimagenes[] ['url'] = '/img/'.$nombre;
+
+            }
+            // return $urlimagenes;
+        }
         $producto = new Product();
 
         $producto->nombre = $request->nombre;
@@ -49,7 +75,6 @@ class ProductController extends Controller
         $producto->ventas = $request->ventas;
         $producto->status = $request->status;
         $producto->category_id = $request->category_id;
-
         if ($request->activo) {
             $producto->activo = "Si";
         } else {
@@ -75,14 +100,13 @@ class ProductController extends Controller
             $producto->visitas = $request->visitas;
             $producto->ventas = $request->ventas;
             $producto->status = $request->status;
+            $producto->images()->createMany($urlimagenes);
             // $producto->activo = $request->activo;
             // $producto->sliderprincipal = $request->sliderprincipal;
             $producto->category_id = $request->category_id;
 
             if ($producto->save()) {
                 // toastr()->success($producto->nombre, 'Se registro nuevo producto');
-                
-
                 return redirect()->to(route('producto.index'));
             } else {
                 toastr()->error('Error al registrar producto');
@@ -92,7 +116,6 @@ class ProductController extends Controller
             toastr()->error('Error al registrar producto');
             return redirect()->to(route('producto.create'));
         }
-  
-    }
 
+    }
 }

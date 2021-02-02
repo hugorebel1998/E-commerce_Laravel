@@ -4,7 +4,7 @@
         <div class="row justify-content-center">
             <div class="col-md-12">
                 <form action="{{ route('producto.store')}}" method="POST" enctype="multipart/form-data">
-                    @csrf
+                    {{ csrf_field() }}
                     <div class="row">
                         <div class="col-md-6">
                             {{-- Seccion datos de producto --}}
@@ -264,13 +264,13 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="text-left mb-4"> <i class="far fa-file-image"></i> Subir imagen</h5>
+                                    <h5 class="text-left mb-4"> <i class="far fa-file-image"></i> Añadir imagen</h5>
                                     <div class="row">
                                         <div class="col-md-12 mb-5">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="archivosimagenes[]"
+                                                <input type="file" class="custom-file-input" name="imagenes[]" id="imagenes[]" 
                                                     multiple accept="image/*">
-                                                <label class="custom-file-label" for="customFile">Subir imagen</label>
+                                                <label class="custom-file-label" for="imagenes">Subir imagen</label>
                                             </div>
                                         </div>
                                     </div>
