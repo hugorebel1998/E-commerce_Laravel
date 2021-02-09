@@ -23,9 +23,8 @@
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.css') }}">
     {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> --}}
     {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> --}}
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    <script src="{{ asset('js/app.js') }}" defer></script>
+    {{-- <script src="{{ asset('js/app.js') }}" defer></script> --}}
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     @toastr_css
 
@@ -167,12 +166,10 @@
 
         <!-- Content Wrapper. Contains page content -->
         <div class="content-wrapper">
-            <div id="app">
             <!-- Main content -->
             <main class="py-4">
                 @yield('content')
             </main>
-        </div>
             <!-- /.content -->
         </div>
         <aside class="control-sidebar control-sidebar-dark">
@@ -198,10 +195,83 @@
     <script src="{{ asset('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script> 
     <script src="{{ asset('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script> 
     <script src="{{ asset('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script> 
+    <!-- AdminLTE App -->
+
     <!-- SweetAlert2 -->
     <script src="{{ asset('adminlte/plugins/sweetalert2/sweetalert2.min.js') }}"></script> 
 
     <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.js"></script>
+
+    <script>
+        $(function() {
+            $("#example1").DataTable({
+                "responsive": true,
+                "autoWidth": false,
+            });
+            $('#example3').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "order": [
+                    [0, 'desc']
+                ],
+                language: {
+                    search: "Buscar:",
+                    "lengthMenu": "Recorrer _MENU_ registros por página",
+                    "zeroRecords": "No hay resultados",
+                    "info": "Página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles ",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    paginate: {
+                        first: "Primera",
+                        previous: "Primera",
+                        next: "Última",
+                        last: "Último"
+                    },
+                }
+            });
+            $('#example2').DataTable({
+                "paging": true,
+                "lengthChange": true,
+                "searching": true,
+                "ordering": true,
+                "info": true,
+                "autoWidth": false,
+                "responsive": true,
+                "order": [
+                    [0, 'desc']
+                ],
+                language: {
+                    search: "Buscar:",
+                    "lengthMenu": "Recorrer _MENU_ registros por página",
+                    "zeroRecords": "No hay resultados",
+                    "info": "Página _PAGE_ de _PAGES_",
+                    "infoEmpty": "No hay registros disponibles ",
+                    "infoFiltered": "(filtrado de _MAX_ registros totales)",
+                    paginate: {
+                        first: "Primera",
+                        previous: "Primera",
+                        next: "Última",
+                        last: "Último"
+                    },
+                }
+            });
+        });
+
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            bsCustomFileInput.init();
+        });
+
+    </script> 
 </body>
 @toastr_js
 @toastr_render 

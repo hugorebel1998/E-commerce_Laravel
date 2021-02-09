@@ -1,4 +1,4 @@
-@extends('layouts.home')
+@extends('layouts.category')
 @section('content')
 
     <div class="container-fluid">
@@ -18,6 +18,7 @@
                         <table class="order-table table table-hover" cellspacing="0" width="100%" id="example2">
                             <thead>
                                 <tr>
+                                    <th scope="col">ID</th>
                                     <th scope="col">Nombre</th>
                                     <th scope="col">Slug</th>
                                     <th scope="col">Descripción</th>
@@ -29,6 +30,7 @@
                             <tbody>
                                 @foreach ($categoria as $category)
                                     <tr>
+                                        <td>{{ $category->id }}</td>
                                         <td>{{ $category->nombre }}</td>
                                         <td>{{ $category->slug}}</td>
                                         <td>{{ $category->descripcion}}</td>

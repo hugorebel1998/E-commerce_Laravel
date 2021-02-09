@@ -1,29 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<style>
-
-.portada{
-   background: url( {{asset('img/FONDO_REGISTRO.jpg')}} ) no-repeat fixed center;
-   -webkit-background-size: cover;
-   -moz-background-size: cover;
-   -o-background-size: cover;
-   background-size: cover;
-}
-
-    .bg-boton{
-        background-color: #213A8A;
-    }
-    .text-boton{
-        color: #213A8A;
-    }
-</style>
 
 <div class="hold-transition login-page portada">
     <div class="login-box">
         <div class="login-logo">
-        <img src="{{ asset('img/logo_life_in_genomics.png')}}" alt="Life in Genomics" width="250">
-
         </div>
         <div class="card mt-4">
 

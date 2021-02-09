@@ -1,5 +1,6 @@
 @extends('layouts.home')
 @section('content')
+
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
@@ -67,7 +68,7 @@
                             </div>
 
                             {{-- Seccion precios --}}
-                            <div class="card card-info">
+                            <div class="card card-info" id="app">
                                 <div class="card-header">
                                     <div class="card-tools">
                                         <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -84,13 +85,10 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$</span>
                                                 </div>
-                                                <input type="number" name="precio_anterior" min="0" step=".01"
-                                                    class="form-control @error('precio_anterior') is-invalid @enderror"
-                                                    placeholder="Precio anterior">
+                                                <input type="number" name="precio_anterior" min="0" step=".01" class="form-control"
+                                                    placeholder="Precio anterior" v-model="precio_anterior">
                                             </div>
-                                            @error('precio_anterior')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
+                        
                                         </div>
                                         <div class="col-md-6">
                                             <label for="precio_actual">Precio actual</label>
@@ -98,37 +96,33 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">$</span>
                                                 </div>
-                                                <input type="number" name="precio_actual" min="0" step=".01"
-                                                    class="form-control @error('precio_actual') is-invalid @enderror"
-                                                    placeholder="Precio actual" value="{{ old('precio_actual')}}">
+                                                <input type="number" name="precio_actual" min="0" step=".01" class="form-control"
+                                                    placeholder="Precio actual" v-model="precio_actual">
                                             </div>
-                                            @error('precio_actual')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
+                        
                                             <br>
-                                            <span id="descuento"></span>
+                                            <span id="descuento">
+                                                @{{ generardescuento }}
+                                            </span>
                                         </div>
                                         <div class="col-md-12 mt-6">
                                             <label for="category_id">Porcentaje de descuento</label>
                                             <div class="input-group">
-                                                <input class="form-control @error('porcentaje_descuento') is-invalid @enderror" type="number" id="porcentaje_descuento"
-                                                    name="porcentaje_descuento" step="any" min="0" min="100" value="0">
+                                                <input class="form-control" type="number" id="porcentaje_descuento" name="porcentaje_descuento"
+                                                    step="any" min="1" max="100" value="0" v-model="porcentaje_descuento">
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text">%</span>
                                                 </div>
-                                                @error('porcentaje_descuento')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
-
                                             </div>
                                             <div class="progress mt-3 mb-4">
-                                                <div class="progress-bar" role="progressbar" style="width: 0%;"
-                                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">0%</div>
+                                                <div class="progress-bar" role="progressbar" v-bind:style="{width:porcentaje_descuento+'%'}"
+                                                    aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">@{{ porcentaje_descuento }}%</div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
+                         
 
                             {{-- Seccion administrador --}}
                             <div class="card card-navy">
@@ -264,14 +258,12 @@
                                     </div>
                                 </div>
                                 <div class="card-body">
-                                    <h5 class="text-left mb-4"> <i class="far fa-file-image"></i> Añadir imagen</h5>
+                                    <h5 class="text-left mb-4"> <i class="far fa-file-image"></i> Subir imagen</h5>
                                     <div class="row">
                                         <div class="col-md-12 mb-5">
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" name="imagenes[]" id="imagenes[]" 
-                                                    multiple accept="image/*">
-                                                <label class="custom-file-label" for="imagenes">Subir imagen</label>
-                                            </div>
+                                                <label for="imagenes">Subir imagen</label>
+                                                <input type="file" class="form-control-sm" name="imagenes[]" id="imagenes[]"
+                                                multiple accept="image/*">
                                         </div>
                                     </div>
                                 </div>

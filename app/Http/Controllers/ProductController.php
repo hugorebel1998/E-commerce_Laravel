@@ -57,7 +57,7 @@ class ProductController extends Controller
                 $urlimagenes[] ['url'] = '/img/'.$nombre;
 
             }
-            // return $urlimagenes;
+            // dd($urlimagenes);
         }
         $producto = new Product();
 
@@ -106,7 +106,7 @@ class ProductController extends Controller
             $producto->category_id = $request->category_id;
 
             if ($producto->save()) {
-                // toastr()->success($producto->nombre, 'Se registro nuevo producto');
+                toastr()->success($producto->nombre, 'Se registro nuevo producto');
                 return redirect()->to(route('producto.index'));
             } else {
                 toastr()->error('Error al registrar producto');

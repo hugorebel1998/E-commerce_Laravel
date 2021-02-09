@@ -30,30 +30,11 @@
 
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
-    {{-- <style>
-        .portada {
-            background: url({{asset("img/FONDO_REGISTRO.jpg")}}) no-repeat fixed center;
-        -webkit-background-size: cover;
-        -moz-background-size: cover;
-        -o-background-size: cover;
-        background-size: cover;
-        }
-
-        .bg-boton {
-            background-color: #213a8a;
-            border-color: #213a8a;
-        }
-
-        .text-boton {
-            color: #213a8a;
-        }
-    </style> --}}
+    
 
 </head>
 
 <body>
-
 
 
     <main class="login">

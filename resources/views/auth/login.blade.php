@@ -6,10 +6,8 @@
 <div class="hold-transition login-page portada">
     <div class="login-box">
         <div class="login-logo mb-3">
-            <!-- <p>Life in Genomics</p> -->
-            {{-- <img src="{{ asset('img/logo_life_in_genomics.png')}}" alt="Life in Genomics" width="250"> --}}
         </div>
-        <div class="card card-outline card-primary mt-4">
+        <div class="card mt-4">
             <div class="card-body login-card-body">
                 <p class="login-box-msg">Iniciar sesión</p>
                 <form method="POST" action="{{ route('login') }}">
