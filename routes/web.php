@@ -46,4 +46,6 @@ Route::get('/categoria/delete/{categori}', 'CategoryController@delete')->name('c
 Route::get('/producto/index', 'ProductController@index')->name('producto.index')->middleware('auth');
 Route::get('/producto/create','ProductController@create')->name('producto.create')->middleware('auth');
 Route::post('/producto/store', 'ProductController@store')->name('producto.store')->middleware('auth');
+Route::get('/producto/show/{product}', 'ProductController@show')->name('producto.show')->middleware('auth');
+Route::get('/producto/edit/{product}', 'ProductController@edit')->name('producto.edit')->middleware('auth');
 

@@ -11,8 +11,9 @@
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
-     <!-- Theme style -->
-    <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}"> 
+    <!-- Select2 -->
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/select2/css/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('adminlte/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css') }}">
     <!-- DataTables -->
     <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
     <link rel="stylesheet"
@@ -21,8 +22,6 @@
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
     <!-- Style css -->
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.css') }}">
-    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script> --}}
-    {{-- <script src="https://cdn.jsdelivr.net/npm/vue@2"></script> --}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -191,6 +190,8 @@
     <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
     <!-- Bootstrap 4 -->
     <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- Select2 -->
+    <script src="{{ asset('adminlte/plugins/select2/js/select2.full.min.js') }} "></script>
     <script src="{{ asset('adminlte/plugins/bs-custom-file-input/bs-custom-file-input.min.js') }}"></script> 
      @yield('scripts')
     <!-- DataTables -->
@@ -202,6 +203,19 @@
     <script src="{{ asset('adminlte/plugins/sweetalert2/sweetalert2.min.js') }}"></script> 
 
     <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+
+    {{-- <script>
+        $(function() {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+            //Initialize Select2 Elements
+            $('.select2bs4').select2({
+                theme: 'bootstrap4'
+            });
+        });
+
+    </script> --}}
 </body>
 @toastr_js
 @toastr_render 

@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-md-12">
-                <form action="{{ route('producto.store')}}" method="POST" enctype="multipart/form-data">
+                <form action="#" method="POST" enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="row">
                         <div class="col-md-12">
@@ -21,14 +21,14 @@
                                     <div class="row">
                                         <div class="col-md-6">
                                             <label for="visitas">Visitas</label>
-                                            <input disabled type="number" name="visitas"
-                                                class="form-control" value="{{ old('visitas')}}">
+                                            <input type="number" name="visitas"
+                                                class="form-control" readonly value="{{ $producto->visitas}}">
                                         </div>
                                         <div class="col-md-6">
                                             <label for="ventas">Ventas</label>
-                                            <input disabled type="number" name="ventas"
+                                            <input type="number" name="ventas"
                                                 class="form-control"
-                                                value="{{ old('ventas') }}">
+                                                readonly value="{{ $producto->ventas}}">
                                         </div>
                                     </div>
                                 </div>
@@ -52,7 +52,7 @@
                                             <label for="nombre">Nombre de producto</label>
                                             <input type="text" name="nombre"
                                                 class="form-control @error('nombre') is-invalid @enderror"
-                                                placeholder="Nombre de producto" value="{{ old('nombre')}}">
+                                                placeholder="Nombre de producto" value="{{  $producto->nombre}}">
                                             @error('nombre')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -61,7 +61,7 @@
                                             <label for="slug">Slug</label>
                                             <input type="text" name="slug"
                                                 class="form-control @error('slug') is-invalid @enderror"
-                                                placeholder="Nombre de slug" value="{{ old('slug')}}">
+                                                placeholder="Nombre de slug" value="{{  $producto->slug }}">
                                             @error('slug')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -71,7 +71,7 @@
                                             <select name="category_id"
                                                 class="form-control select2 @error('category_id') is-invalid @enderror" >
                                                 @foreach ($categorias as $categoria)
-                                                    @if ($loop->first)
+                                                    @if ($categoria->id == $producto    ->category_id)
                                                         <option value="{{ $categoria->id }}" selected="selected">
                                                             {{ $categoria->nombre }}
                                                         </option>
@@ -86,7 +86,7 @@
                                             <label for="cantidad">Cantidad</label>
                                             <input type="number" name="cantidad"
                                                 class="form-control @error('cantidad') is-invalid @enderror"
-                                                value="{{ old('cantidad') }}" placeholder="Cantidad">
+                                                value="{{ $producto->cantidad }}" placeholder="Cantidad">
                                             @error('cantidad')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -114,7 +114,7 @@
                                                     <span class="input-group-text">$</span>
                                                 </div>
                                                 <input type="number" name="precio_anterior" min="0" step=".01" class="form-control"
-                                                    placeholder="Precio anterior" v-model="precio_anterior">
+                                                    placeholder="Precio anterior" v-model="precio_anterior" value="{{ $producto->precio_anterior }}">
                                             </div>
                         
                                         </div>
@@ -125,7 +125,7 @@
                                                     <span class="input-group-text">$</span>
                                                 </div>
                                                 <input type="number" name="precio_actual" min="0" step=".01" class="form-control"
-                                                    placeholder="Precio actual" v-model="precio_actual">
+                                                    placeholder="Precio actual" v-model="precio_actual" value="{{ $producto->precio_actual }}">
                                             </div>
                         
                                             <br>
@@ -168,29 +168,31 @@
                                             <label for="status">Estatus</label>
                                             <input type="text" name="status"
                                                 class="form-control @error('status') is-invalid @enderror"
-                                                placeholder="Estatus">
-                                            @error('status')
-                                                <div class="text-danger">{{ $message }}</div>
-                                            @enderror
+                                                placeholder="Estatus" value="{{ $producto->status }}">
                                         </div>
                                         <div class="col-md-6 mb-1">
                                             <div class="form-group clearfix">
                                                 <div class="custom-control custom-checkbox">
                                                     <input type="checkbox"
                                                         class="custom-control-input @error('activo') is-invalid @enderror"
-                                                        id="activo" name="activo">
+                                                        id="activo" name="activo"
+                                                        @if ($producto->activo== 'Si')
+                                                        checked
+                                                        @endif
+                                                        >
                                                     <label class="custom-control-label" for="activo">Activo</label>
                                                 </div>
-                                                @error('activo')
-                                                    <div class="text-danger">{{ $message }}</div>
-                                                @enderror
-
                                             </div>
 
                                             <div class="form-group">
                                                 <div class="custom-control custom-switch">
                                                     <input type="checkbox" class="custom-control-input" id="sliderprincipal"
-                                                        name="sliderprincipal">
+                                                        name="sliderprincipal"
+                                                        @if ($producto->sliderprincipal == 'Si')
+                                                        checked
+                                                        @endif
+                                                        
+                                                        >
                                                     <label class="custom-control-label" for="sliderprincipal">Aparece en el
                                                         Slider principal</label>
                                                 </div>
@@ -220,7 +222,7 @@
                                             <label for="descripcion_corta">Descripción corta</label>
                                             <textarea name="descripcion_corta"
                                                 class="form-control @error('descripcion_corta') is-invalid @enderror"
-                                                rows="2"></textarea>
+                                                rows="2">{{  $producto->descripcion_corta }}</textarea>
                                             @error('descripcion_corta')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -229,13 +231,12 @@
                                             <label for="descripcion_larga">Descripción larga</label>
                                             <textarea name="descripcion_larga"
                                                 class="form-control @error('descripcion_larga') is-invalid @enderror"
-                                                rows="2"></textarea>
+                                                rows="2">{{ $producto->descripcion_larga}}</textarea>
                                             @error('descripcion_larga')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
                                         </div>
                                     </div>
-
                                 </div>
                             </div>
 
@@ -257,7 +258,7 @@
                                             <label for="especificaciones">Especificaciónes</label>
                                             <textarea name="especificaciones"
                                                 class="form-control @error('especificaciones') is-invalid @enderror"
-                                                rows="3"></textarea>
+                                                rows="3">{{ $producto->especificaciones }}</textarea>
                                             @error('especificaciones')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror
@@ -266,7 +267,7 @@
                                             <label for="datos_de_interes">Datos de interes</label>
                                             <textarea name="datos_de_interes"
                                                 class="form-control @error('datos_de_interes') is-invalid @enderror"
-                                                rows="3"></textarea>
+                                                rows="3">{{ $producto->datos_de_interes }}</textarea>
                                             @error('datos_de_interes')
                                                 <div class="text-danger">{{ $message }}</div>
                                             @enderror

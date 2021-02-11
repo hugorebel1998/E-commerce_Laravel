@@ -34,10 +34,11 @@
                                         <td>{{ $product->id }}</td>
                                         <td>
                                             @if ($product->images->count() <=0)
-                                                <img style="height:100px;" scr="{{ url('/img/1612849966_images.jpeg')}}"
+
+                                                <img style="height:100px; width:100px;" src="{{ url('/img/1612845227_television.jpg')}}"
                                                     class="round-circle">
                                             @else
-                                                <img scr="{{ $product->images->random()->url }}" style="height:70px" class="round-circle">
+                                                <img src="{{ $product->images->random()->url }}" style="height:100px; width:100px;" class="round-circle">
                                             @endif
                                         </td>
                                         <td>{{ $product->nombre }}</td>
@@ -56,7 +57,7 @@
                                                 <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
                                                     <a class="dropdown-item text-success" href="#"><i
                                                             class="far fa-eye"></i> Ver producto</a>
-                                                    <a class="dropdown-item text-primary" href="#"><i
+                                                    <a class="dropdown-item text-primary" href="{{ route('producto.edit', $product->id) }}"><i
                                                             class="far fa-edit"></i> Editar producto</a>
                                                     <a class="dropdown-item text-danger"
                                                         onclick="return confirm('¿ Estas seguro de eliminar esta categoria ?')"

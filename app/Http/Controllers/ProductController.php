@@ -43,19 +43,18 @@ class ProductController extends Controller
 
             // dd($imagenes);
             //Recorrer todas las imagenes
-            foreach($imagenes as $imagen){
+            foreach ($imagenes as $imagen) {
                 //Obtener el nombre original de laimagen con getClientOriginalName
-                $nombre = time().'_'. $imagen->getClientOriginalName();
-                
+                $nombre = time() . '_' . $imagen->getClientOriginalName();
+
                 //Crear en donde se alojara la imagen con public_path
-                $ruta = public_path().'/img';
+                $ruta = public_path() . '/img';
 
                 //Guardar la imagen move
                 $imagen->move($ruta, $nombre);
 
                 //Guardarlo en la BD
-                $urlimagenes[] ['url'] = '/img/'.$nombre;
-
+                $urlimagenes[]['url'] = '/img/' . $nombre;
             }
             // dd($urlimagenes);
         }
@@ -71,8 +70,8 @@ class ProductController extends Controller
         $producto->descripcion_larga = $request->descripcion_larga;
         $producto->especificaciones = $request->especificaciones;
         $producto->datos_de_interes = $request->datos_de_interes;
-        $producto->visitas = $request->visitas;
-        $producto->ventas = $request->ventas;
+        // $producto->visitas = $request->visitas;
+        // $producto->ventas = $request->ventas;
         $producto->status = $request->status;
         $producto->category_id = $request->category_id;
         if ($request->activo) {
@@ -97,8 +96,8 @@ class ProductController extends Controller
             $producto->descripcion_larga = $request->descripcion_larga;
             $producto->especificaciones = $request->especificaciones;
             $producto->datos_de_interes = $request->datos_de_interes;
-            $producto->visitas = $request->visitas;
-            $producto->ventas = $request->ventas;
+            // $producto->visitas = $request->visitas;
+            // $producto->ventas = $request->ventas;
             $producto->status = $request->status;
             $producto->images()->createMany($urlimagenes);
             // $producto->activo = $request->activo;
@@ -116,6 +115,16 @@ class ProductController extends Controller
             toastr()->error('Error al registrar producto');
             return redirect()->to(route('producto.create'));
         }
-
+    }
+    public function show()
+    {
+        //
+    }
+    public function edit($product)
+    {
+        $producto = Product::findOrFail($product);
+        $categorias = Category::orderBy('nombre')->get();
+        return view ('productos.edit', compact('producto', 'categorias'));
+        
     }
 }

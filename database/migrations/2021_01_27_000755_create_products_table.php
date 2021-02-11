@@ -25,8 +25,8 @@ class CreateProductsTable extends Migration
             $table->text('descripcion_larga');
             $table->text('especificaciones');
             $table->text('datos_de_interes');
-            $table->integer('visitas')->default(0)->nullable();
-            $table->integer('ventas')->default(0)->nullable();
+            $table->integer('visitas')->default(0);
+            $table->integer('ventas')->default(0);
             $table->string('status');
             $table->char('activo',2);
             $table->char('sliderprincipal',2);
